@@ -1,0 +1,62 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-02-07T19:21:17+01:00",
+    "name": "OrbisProxy",
+    "author": "orbisproxy@ricosw.de",
+    "description": "OrbisProxy is a lightweight, high-performance proxy written in Go (not Java).  \r\nIt is designed for reliability, scalability with built-in loadbalancing, player transfers, and plugin support.",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/pterodactyl\/yolks:alpine": "ghcr.io\/pterodactyl\/yolks:alpine"
+    },
+    "file_denylist": [],
+    "startup": ".\/orbisproxy -c {{CONFIG_PATH}} -debug {{DEBUG}}",
+    "config": {
+        "files": "{}",
+        "startup": "{}",
+        "logs": "{}",
+        "stop": "quit"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/sh\r\nset -e\r\n\r\ncd \/mnt\/server\r\n\r\necho \"Installing required packages...\"\r\napk add --no-cache ca-certificates wget\r\n\r\nREPO=\"OrbisProxy\/proxy\"\r\nBINARY_NAME=\"orbisproxy-linux\"\r\nVERSION=\"${VERSION:-latest}\"\r\n\r\necho \"Installing OrbisProxy\"\r\necho \"Requested version: $VERSION\"\r\n\r\nif [ \"$VERSION\" = \"latest\" ]; then\r\n  echo \"Fetching latest release tag from GitHub...\"\r\n\r\n  TAG=$(wget -qO- \"https:\/\/api.github.com\/repos\/$REPO\/releases\/latest\" \\\r\n    | sed -n 's\/.*\"tag_name\":[[:space:]]*\"\\([^\"]*\\)\".*\/\\1\/p')\r\n\r\n  if [ -z \"$TAG\" ]; then\r\n    echo \"Failed to determine latest release tag\"\r\n    exit 1\r\n  fi\r\nelse\r\n  TAG=\"$VERSION\"\r\nfi\r\n\r\necho \"Using release tag: $TAG\"\r\n\r\nDOWNLOAD_URL=\"https:\/\/github.com\/$REPO\/releases\/download\/$TAG\/$BINARY_NAME\"\r\n\r\necho \"Downloading binary:\"\r\necho \"$DOWNLOAD_URL\"\r\n\r\nwget -O orbisproxy \"$DOWNLOAD_URL\"\r\nchmod +x orbisproxy\r\n\r\necho \"OrbisProxy installed successfully\"",
+            "container": "alpine:3.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Config Path",
+            "description": "Path to config.yml",
+            "env_variable": "CONFIG_PATH",
+            "default_value": "config.yml",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Debug Mode",
+            "description": "Enable debug logging",
+            "env_variable": "DEBUG",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Release Version",
+            "description": "GitHub release tag to install (example: latest or v1.0.0)",
+            "env_variable": "VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        }
+    ]
+}
