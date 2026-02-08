@@ -89,6 +89,11 @@ Linux only. Windows is not supported.
 
 ---
 
+## Backend Server Setup
+See [Backend Server Setup](docs/BACKEND_SERVER_SETUP.md) Guide
+
+---
+
 ## Installation (Linux Service)
 
 Example systemd service file:
