@@ -1,0 +1,85 @@
+name: Discord Release Announcement
+
+on:
+  release:
+    types: [published]
+
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (example: v1.0.0)"
+        required: true
+        type: string
+
+      release_type:
+        description: "Release type"
+        required: true
+        default: "stable"
+        type: choice
+        options:
+          - stable
+          - dev
+
+      mention_everyone:
+        description: "Mention @everyone"
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord (GitHub Release)
+        if: github.event_name == 'release'
+        uses: SethCohen/github-releases-to-discord@v1
+        with:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          content: |
+            ${{ 
+              (github.event_name == 'workflow_dispatch' && github.event.inputs.mention_everyone == 'true') 
+              && '||@everyone||' 
+              || 
+              (github.event_name == 'release' && '||@everyone||') 
+            }}
+
+            **New OrbisProxy Release**
+            Version: **${{ github.event_name == 'release' && github.event.release.tag_name || github.event.inputs.version }}**
+            Type: ${{ 
+              github.event_name == 'release' 
+              && (github.event.release.prerelease && 'Development / Pre-Release' || 'Stable Release') 
+              || 
+              (github.event.inputs.release_type == 'dev' && 'Development / Pre-Release' || 'Stable Release') 
+            }}
+
+            Download:
+            ${{ 
+              github.event_name == 'release' 
+              && github.event.release.html_url 
+              || 
+              format('https://github.com/OrbisProxy/proxy/releases/tag/{0}', github.event.inputs.version) 
+            }}
+
+          color: "2105893"
+          footer_title: "OrbisProxy Changelog"
+          reduce_headings: true
+      - name: Discord (Manual)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          MESSAGE=$(cat <<EOF
+          **New OrbisProxy Release**
+          Version: **${{ github.event.inputs.version }}**
+          Type: ${{ github.event.inputs.release_type }}
+
+          Download:
+          https://github.com/OrbisProxy/proxy/releases/tag/${{ github.event.inputs.version }}
+          EOF
+          )
+
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -d "$(jq -n --arg content "$MESSAGE" '{content: $content}')" \
+            ${{ secrets.WEBHOOK_URL }}
