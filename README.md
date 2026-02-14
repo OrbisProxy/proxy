@@ -4,6 +4,11 @@
 [![Discord](https://img.shields.io/badge/Discord-Join-blue?logo=discord)](https://discord.gg/4uDaw4pH7F)
 [![Latest Release](https://img.shields.io/github/v/release/OrbisProxy/proxy?label=Latest%20Release)](https://github.com/OrbisProxy/proxy/releases/latest)
 
+### Supported Hytale Server Versions
+
+![Hytale Release](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/OrbisProxy/proxy/master/hytale-compat.json&query=$.primary&label=Hytale%20Release&color=brightgreen&style=for-the-badge&style=flat)
+![Hytale PreRelease](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/OrbisProxy/proxy/master/hytale-compat.json&query=$.pre_release_tested[0]&label=Hytale%20Pre-Release&color=orange&style=for-the-badge&style=flat)
+
 **Alpha – Work in Progress**  
 This project is currently in early development. Things may change and bugs are expected.  
 Please open an issue if you run into problems or unexpected behavior.
@@ -19,6 +24,8 @@ It is designed for reliability, scalability with built-in loadbalancing, player 
 - Server with load balancing strategies
 - Player transfer system
 - Automatic fallback handling
+- Route-based connections
+  - Define hostnames and automatically route incoming connections to specific backend servers based on the used domain
 - Plugin extensibility
 - Lua Plugin API (work in progress)
 - **(Planned)** Go Plugin API (Linux only) for advanced plugin extensibility
@@ -88,6 +95,9 @@ Advanced plugin development in Go.
 Linux only. Windows is not supported.
 
 ---
+
+## Proxy Configuration
+See example [Proxy Configuration](docs/PROXY_CONFIGURATION.md)
 
 ## Backend Server Setup
 See [Backend Server Setup](docs/BACKEND_SERVER_SETUP.md) Guide
