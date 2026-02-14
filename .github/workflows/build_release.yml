@@ -142,7 +142,7 @@ jobs:
 
           {
             echo "prerelease_list<<EOF"
-            echo "`$PRERELEASE`"
+            echo "$PRERELEASE"
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
