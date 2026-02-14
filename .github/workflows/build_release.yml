@@ -128,7 +128,9 @@ jobs:
         run: |
           PRIMARY=$(jq -r '.primary // "unknown"' hytale-compat.json)
 
-          LIST=$(jq -r '.supported[]' hytale-compat.json | sed 's/^/- /')
+          SUPPORTED=$(jq -r '.supported[]' hytale-compat.json | sed 's/^/- /')
+
+          PRERELEASE=$(jq -r '.pre_release_tested[]? // empty' hytale-compat.json | sed 's/^/- /')
 
           echo "primary_version=$PRIMARY" >> $GITHUB_OUTPUT
 
@@ -138,6 +140,11 @@ jobs:
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
+          {
+            echo "prerelease_list<<EOF"
+            echo "`$PRERELEASE`"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -157,7 +164,10 @@ jobs:
             ### Compatible Hytale Versions:
             ${{ steps.hytale_version.outputs.versions_list }}
 
-            > Primary Version: `${{ steps.hytale_version.outputs.primary_version }}`
+            Primary Version: `${{ steps.hytale_version.outputs.primary_version }}`
+
+            ### Tested Hytale Pre-Release Versions:
+            ${{ steps.hytale_version.outputs.prerelease_list }}
 
             ---
 
@@ -202,4 +212,3 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
