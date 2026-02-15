@@ -48,14 +48,15 @@ If a backend server crashes or becomes unreachable, all players are automaticall
 
 ## Commands
 
-| Command | Arguments | Permission | Description |
-|---------|-----------|-----------|-------------|
-| `/proxy` | — | — | Shows all proxy commands |
-| `/proxy` | `servers` | — | Lists all servers and their online/offline status |
-| `/whereami` | — | — | Displays the current server |
-| `/transfer` | `<server> [player]` | `orbisproxy.command.transfer` | Transfer a specific player to a server |
-| `/transfer` | `<server> all` | `orbisproxy.command.transfer` | Transfer all players to a server |
-| `/transfer` | `<pool-name>` | `orbisproxy.command.transfer` | Transfer player to a pool (auto-selected target) |
+| Command | Arguments                    | Permission | Description |
+|---------|------------------------------|-----------|-------------|
+| `/proxy` | —                            | `orbisproxy.command.proxy` | Shows all proxy commands |
+| `/proxy` | `servers`                    | `orbisproxy.command.proxy.servers` | Lists all servers and their online/offline status |
+| `/proxy` | `version`                    | `orbisproxy.command.proxy.version` | Lists all servers and their online/offline status |
+| `/proxy` | `find --target=[player]`     | `orbisproxy.command.proxy.find` | Lists all servers and their online/offline status |
+| `/transfer` | `<server> --target=[player]` | `orbisproxy.command.transfer` | Transfer a specific player to a server |
+| `/transfer` | `<server> --all`             | `orbisproxy.command.transfer` | Transfer all players to a server |
+| `/transfer` | `<pool-name>`                | `orbisproxy.command.transfer` | Transfer player to a pool (auto-selected target) |
 
 ## Plugin and ClientReferral Transfers
 
