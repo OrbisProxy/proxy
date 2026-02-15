@@ -26,6 +26,7 @@ It is designed for reliability, scalability with built-in loadbalancing, player 
 - Automatic fallback handling
 - Route-based connections
   - Define hostnames and automatically route incoming connections to specific backend servers based on the used domain
+- Multi-language support with per-player localization (en, de, zh, es, ru)
 - Plugin extensibility
 - Lua Plugin API (work in progress)
 - **(Planned)** Go Plugin API (Linux only) for advanced plugin extensibility
