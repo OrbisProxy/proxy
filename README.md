@@ -52,8 +52,8 @@ If a backend server crashes or becomes unreachable, all players are automaticall
 |---------|------------------------------|-----------|-------------|
 | `/proxy` | —                            | `orbisproxy.command.proxy` | Shows all proxy commands |
 | `/proxy` | `servers`                    | `orbisproxy.command.proxy.servers` | Lists all servers and their online/offline status |
-| `/proxy` | `version`                    | `orbisproxy.command.proxy.version` | Lists all servers and their online/offline status |
-| `/proxy` | `find --target=[player]`     | `orbisproxy.command.proxy.find` | Lists all servers and their online/offline status |
+| `/proxy` | `version`                    | `orbisproxy.command.proxy.version` | Shows the proxy version |
+| `/proxy` | `find --target=[player]`     | `orbisproxy.command.proxy.find` | Find a specific player on the proxy |
 | `/transfer` | `<server> --target=[player]` | `orbisproxy.command.transfer` | Transfer a specific player to a server |
 | `/transfer` | `<server> --all`             | `orbisproxy.command.transfer` | Transfer all players to a server |
 | `/transfer` | `<pool-name>`                | `orbisproxy.command.transfer` | Transfer player to a pool (auto-selected target) |
