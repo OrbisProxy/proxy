@@ -108,32 +108,21 @@ See [Backend Server Setup](docs/BACKEND_SERVER_SETUP.md) Guide
 
 ## Installation (Linux Service)
 
-Example systemd service file:
+See [Linux Service Installation](docs/INSTALLATION_GUIDE.md) Guide
 
-Create file:
-``/etc/systemd/system/orbisproxy.service``
+## Installation (Pterodactyl Egg)
 
-Content:
-```
-[Unit]
-Description=OrbisProxy Service
-After=network.target
+See [Pterodactyl Egg](docs/INSTALLATION_GUIDE.md#pterodactyl-egg) Guide
 
-[Service]
-Type=simple
-WorkingDirectory=/opt/orbisproxy
-ExecStart=/opt/orbisproxy/orbisproxy -c config.yml
-Restart=always
-RestartSec=3
+## Deployment & Support
 
-[Install]
-WantedBy=multi-user.target
-```
-Then run:
+If you require any specific deployment options or assistance, please feel free to reach out to us on [Discord](https://discord.gg/4uDaw4pH7F).
 
-`sudo systemctl daemon-reload`<br>
-`sudo systemctl enable orbisproxy`<br>
-`sudo systemctl start orbisproxy`
+## Compatible Hytale Mods
+
+OrbisProxy is confirmed to work with a variety of Hytale mods, including:
+
+- **Admin Portals** - fully supported
 
 ---
 
