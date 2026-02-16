@@ -14,7 +14,7 @@ This project is currently in early development. Things may change and bugs are e
 Please open an issue if you run into problems or unexpected behavior.
 
 OrbisProxy is a lightweight, high-performance proxy written in Go (not Java).  
-It is designed for reliability, scalability with built-in loadbalancing, player transfers, and plugin support (WIP).
+It is designed for reliability, scalability with built-in load balancing, player transfers, automatic fallback handling, and plugin support.
 
 ---
 
@@ -28,7 +28,7 @@ It is designed for reliability, scalability with built-in loadbalancing, player 
   - Define hostnames and automatically route incoming connections to specific backend servers based on the used domain
 - Multi-language support with per-player localization (en, de, zh, es, ru)
 - Plugin extensibility
-- Lua Plugin API (work in progress)
+- Hot-Reloadable Lua Plugins: [Lua Plugin API](#lua-api)
 - **(Planned)** Go Plugin API (Linux only) for advanced plugin extensibility
 
 ---
@@ -89,8 +89,9 @@ Enable debug logging (default: false)
 
 ## Plugin API
 
-### Lua API (Work in Progress)
-Quick and easy scripting for lightweight plugins. Documentation coming soon.
+### Lua API
+Quick and easy scripting for lightweight plugins.<br>
+See the full Lua API reference here:  [Lua API Documentation](/docs/lua-api/index.md)
 
 ### Go API (Planned)
 Advanced plugin development in Go.  
