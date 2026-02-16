@@ -63,8 +63,8 @@ jobs:
           VERSION="${{ github.event.inputs.version }}"
           COMMIT="$(git rev-parse --short HEAD)"
           DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          GOOS=linux GOARCH=amd64 go build -ldflags="-s -w -X ricosw.de/proxy/internal/core/buildinfo.Version=$VERSION -X ricosw.de/proxy/internal/core/buildinfo.Commit=$COMMIT -X ricosw.de/proxy/internal/core/buildinfo.BuildDate=$DATE" -o ../dist/orbisproxy-linux ./cmd
-          GOOS=windows GOARCH=amd64 go build -ldflags="-s -w -X ricosw.de/proxy/internal/core/buildinfo.Version=$VERSION -X ricosw.de/proxy/internal/core/buildinfo.Commit=$COMMIT -X ricosw.de/proxy/internal/core/buildinfo.BuildDate=$DATE" -o ../dist/orbisproxy-windows.exe ./cmd
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w -X ricosw.de/proxy/internal/core/buildinfo.Version=$VERSION -X ricosw.de/proxy/internal/core/buildinfo.Commit=$COMMIT -X ricosw.de/proxy/internal/core/buildinfo.BuildDate=$DATE" -o ../dist/orbisproxy-linux ./cmd
+          GOOS=windows GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w -X ricosw.de/proxy/internal/core/buildinfo.Version=$VERSION -X ricosw.de/proxy/internal/core/buildinfo.Commit=$COMMIT -X ricosw.de/proxy/internal/core/buildinfo.BuildDate=$DATE" -o ../dist/orbisproxy-windows.exe ./cmd
 
       - name: Build OrbisProxy Mod
         working-directory: orbisproxy-mod
