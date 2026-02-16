@@ -59,3 +59,60 @@ proxy:on("session_connected", function(event)
     log("Player successfully connected to " .. event.target_server)
 end)
 ```
+
+## session_disconnected
+
+Triggered after a player has disconnected from the proxy.
+
+This event is **read-only**.
+
+### Event Fields
+
+| Field          | Type                                             | Mutable | Description                                   |
+|---------------|--------------------------------------------------|---------|-----------------------------------------------|
+| player        | [`Player`](./player_object.md)                   | ❌ No   | The player object.                  |
+
+
+### Example
+
+``` lua
+proxy:on("session_disconnected", function(event)
+    log("Player disconnected " .. event.player:getName())
+end)
+```
+
+## proxy_ready
+
+Triggered after the proxy is ready to accept player connections.
+
+This event is **read-only**.
+
+### Event Fields
+
+None
+
+### Example
+
+``` lua
+proxy:on("proxy_ready", function(event)
+    log("Proxy is ready to accept connections")
+end)
+```
+
+## proxy_shutdown
+
+Triggered after proxy shut down was initiated. 
+
+This event is **read-only**.
+
+### Event Fields
+
+None
+
+### Example
+
+``` lua
+proxy:on("proxy_shutdown", function(event)
+    log("Proxy is shutting down")
+end)
+```
