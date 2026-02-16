@@ -31,6 +31,13 @@ proxy:on("session_connect", function()
 end)
 ```
 
+## Hot Reload Support
+
+Lua plugins are fully hot-reload capable.
+
+Changes to a plugin file are detected automatically and the plugin is reloaded without restarting the proxy.
+This allows rapid development and live adjustments in production environments.
+
 ## API Versioning
 
 You can check the Lua API version via:
