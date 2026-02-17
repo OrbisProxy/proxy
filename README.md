@@ -107,6 +107,10 @@ See [Backend Server Setup](docs/BACKEND_SERVER_SETUP.md) Guide
 
 ---
 
+## Installation (Docker)
+
+See [Docker](docs/DOCKER.md) Guide
+
 ## Installation (Linux Service)
 
 See [Linux Service Installation](docs/INSTALLATION_GUIDE.md) Guide
