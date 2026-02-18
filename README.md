@@ -9,10 +9,6 @@
 ![Hytale Release](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/OrbisProxy/proxy/master/hytale-compat.json&query=$.primary&label=Hytale%20Release&color=brightgreen&style=for-the-badge&style=flat)
 ![Hytale PreRelease](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/OrbisProxy/proxy/master/hytale-compat.json&query=$.pre_release_tested[0]&label=Hytale%20Pre-Release&color=orange&style=for-the-badge&style=flat)
 
-**Alpha – Work in Progress**  
-This project is currently in early development. Things may change and bugs are expected.  
-Please open an issue if you run into problems or unexpected behavior.
-
 OrbisProxy is a lightweight, high-performance proxy written in Go (not Java).  
 It is designed for reliability, scalability with built-in load balancing, player transfers, automatic fallback handling, and plugin support.
 
