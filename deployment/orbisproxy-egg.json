@@ -4,16 +4,16 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2026-04-22T22:44:31+00:00",
+    "exported_at": "2026-04-22T23:01:27+00:00",
     "name": "OrbisProxy",
     "author": "orbisproxy@ricosw.de",
     "description": "OrbisProxy is a lightweight, high-performance proxy written in Go (not Java).  \r\nIt is designed for reliability, scalability with built-in loadbalancing, player transfers, and plugin support.",
-    "features": null,
+    "features": [],
     "docker_images": {
         "ghcr.io\/pterodactyl\/yolks:alpine": "ghcr.io\/pterodactyl\/yolks:alpine"
     },
     "file_denylist": [],
-    "startup": ".\/orbisproxy -c {{CONFIG_PATH}} -debug {{DEBUG}}",
+    "startup": ".\/orbisproxy -c {{CONFIG_PATH}}  $([ \"${DEBUG}\" = \"1\" ] && echo \"-debug\")",
     "config": {
         "files": "{}",
         "startup": "{}",
