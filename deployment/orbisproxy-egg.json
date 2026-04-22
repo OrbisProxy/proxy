@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2026-02-07T19:21:17+01:00",
+    "exported_at": "2026-04-22T22:44:31+00:00",
     "name": "OrbisProxy",
     "author": "orbisproxy@ricosw.de",
     "description": "OrbisProxy is a lightweight, high-performance proxy written in Go (not Java).  \r\nIt is designed for reliability, scalability with built-in loadbalancing, player transfers, and plugin support.",
@@ -42,7 +42,7 @@
             "name": "Debug Mode",
             "description": "Enable debug logging",
             "env_variable": "DEBUG",
-            "default_value": "false",
+            "default_value": "0",
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|boolean",
